@@ -26,11 +26,7 @@ pipeline {
                 junit testResults: '**/test-*.xml'
             }
         }
-        stage('publish') {
-            steps {
-                junit testResultsFiles: '**/test-*.xml'
-            }
-        }
+       
     }
 }
     
