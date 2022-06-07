@@ -20,7 +20,11 @@ pipeline {
                 sh 'pip install pytest-cov'
                 sh '/home/devops/.local/bin/pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml'
             }
-                    
+        }
+        stage('publish') {
+            steps{
+                junit testResults: '**/test-*.xml'
+            }
         }
         stage('publish') {
             steps {
