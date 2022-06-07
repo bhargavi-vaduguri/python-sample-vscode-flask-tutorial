@@ -23,8 +23,8 @@ pipeline {
                     
         }
         stage('publish') {
-           steps {
-               junit testResultsFiles: '**/test-*.xml'
+            steps {
+                junit testResultsFiles: '**/test-*.xml'
             }
         }
     }
