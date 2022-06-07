@@ -1,0 +1,22 @@
+pipeline {
+    agent { label 'jdk11-mvn3.8.4' }
+    stages {
+        stage('scm') {
+            steps {
+
+                git url: 'https://github.com/bhargavi-vaduguri/python-sample-vscode-flask-tutorial.git', branch: 'master'
+            }
+        }
+        stage('build') {
+            steps {
+                sh "pip install -r requirements.txt"
+            }
+        }
+        stage('test') {
+            steps{
+                sh 'pip install pytest pytest-azurepipelines'
+            }
+        }
+    }
+}
+    
