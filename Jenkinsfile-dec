@@ -9,7 +9,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'python -m pip help install'
+                sh 'python3 -m pip help install'
                 sh 'pip install -r requirements.txt'
             
             }
