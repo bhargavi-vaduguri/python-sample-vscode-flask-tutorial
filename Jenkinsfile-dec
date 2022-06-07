@@ -15,6 +15,7 @@ pipeline {
         stage('test') {
             steps{
                 sh 'pip install pytest pytest-azurepipelines'
+                sh 'python -m pip install flake8'
             }
         }
     }
