@@ -9,7 +9,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'python -m pip install'
+                sh 'python -m pip help install'
                 sh 'pip install -r requirements.txt'
             
             }
@@ -18,7 +18,7 @@ pipeline {
             steps{
                 sh 'pip install pytest pytest-azurepipelines' 
                 sh 'pip install pytest-cov'
-                 sh 'pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml'
+                sh '/home/devops/.local/bin/pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml'
             }
                     
         }
