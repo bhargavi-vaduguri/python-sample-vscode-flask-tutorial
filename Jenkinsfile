@@ -12,6 +12,6 @@ node('jdk11-mvn3.8.4') {
          sh '/home/devops/.local/bin/pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml'
     } 
     stage('publish') {
-        junit testResultsFiles: '**/test-*.xml'
+        junit testResults: '**/test-*.xml'
     }
 }
