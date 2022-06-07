@@ -9,18 +9,23 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'python -m pip help install'
+                sh 'python3 -m pip help install'
                 sh 'pip install -r requirements.txt'
             
             }
         }
         stage('test') {
-            steps{
+            steps {
                 sh 'pip install pytest pytest-azurepipelines' 
                 sh 'pip install pytest-cov'
                 sh '/home/devops/.local/bin/pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml'
             }
                     
+        }
+        stage('publish') {
+            steps {
+                junit testResultsFiles: '**/test-*.xml'
+            }
         }
     }
 }
